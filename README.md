@@ -1,56 +1,50 @@
-# Welcome to your Expo app 👋
+# Liftoff Frontend Take-Home - Bike Shop
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An Expo React Native implementation of the given bike-shop design, built using TypeScript, NativeWind, Zustand, and React Native Reanimated for app animation.
 
-## Get started
+## How to run
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+This project requires Node.js and npm
 
 ```bash
-npm run reset-project
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Open the project in a compatible Expo Go app or iOS simulator (shift + i on Mac). The weather API integration requires internet connection. No API key or environment variables needed for that.
 
-### Other setup steps
+## Features
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+- Product listing with category filters and search
+- Product details with description and specification tabs
+- Live Toronto weather using Open-Meteo API in the specification tab
+- Cart with quantity controls, removal at 0 quantity, and calculated totals.
+- Promo-code support: enter BIKE30 in the field for a 30% discount
+- Animated slide-to-confirm demo checkout
+- Reanimated button scaling, tab selection, screen transitions, and checkout motion
 
-## Learn more
+## Implementation decisions
 
-To learn more about developing your project with Expo, look at the following resources:
+The product data in this project is purely local as the exercise focuses on implementing the frontend from the Figma design. I used Zustand to manage shared cart state, as well as reusable components to handle product cards, buttons, quality controls, and totals.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+I chose the Open-Meteo public API for my API as the weather is relevant to cycling. The weather panel includes loading and error states to fallback when the user has spotty connection or if the API is experiencing difficulties. The request is canceled when the screen unmounts.
 
-## Join the community
+## Assumptions and tradeoffs
 
-Join our community of developers creating universal apps.
+- Weather uses a fixed Toronto location for the sake of the project, for product I would fetch user location
+- Delivery is free, and checkout is demonstration only, no payment is processed
+- Cart state is held in local memory and resets on app restart
+- Navigation is implemented around the shopping flow. Destinations not specified in the exercise were not added (footer view)
+- The interface follows the Figma visual design, with some minor differences in styling
+- Screen transitions animate content rather than the native header. I used the header’s back button for back navigation
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Validation
+
+TypeScript checking and a web production export passed during development.
+Manually tested on: iPhone 13 mini and iPhone 17 Pro Max
+
+## Submission links
+
+Video walkthrough: https://youtu.be/mlfSRLYwlXg
+
+AI conversation transcripts: (`<Liftoff Frontend ChatGPT Transcript.pdf>`) in the repo
