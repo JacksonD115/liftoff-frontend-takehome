@@ -52,31 +52,29 @@ export default function ProductDetailScreen() {
                         onChange={setSelectedTab}
                     />
 
-                <View className="mt-6">
-                {selectedTab === 'description' ? (
-                    <View className="gap-6">
-                        <View>
-                        <Text className="text-sm font-bold text-white">
-                            {product.name}
-                        </Text>
+                    <View className="mt-6">
+                        {selectedTab === 'description' ? (
+                            <View>
+                                <Text className="text-sm font-bold text-white">
+                                {product.name}
+                                </Text>
 
-                        <Text className="mt-3 text-xs leading-5 text-gray-400">
-                            {product.description}
-                        </Text>
-                        </View>
-
-                        {product.category !== 'helmet' && (
-                            <RidingWeatherPanel
+                                <Text className="mt-3 text-xs leading-5 text-gray-400">
+                                {product.description}
+                                </Text>
+                            </View>
+                            ) : (
+                            <View className="gap-6">
+                                <RidingWeatherPanel
                                 weather={weather}
                                 loading={loading}
                                 error={error}
-                            />
+                                />
+
+                                <SpecsPanel specs={product.specs} />
+                            </View>
                         )}
                     </View>
-                    ) : (
-                    <SpecsPanel specs={product.specs} />
-                )}
-                </View>
                 </View>
             </ScrollView>
     

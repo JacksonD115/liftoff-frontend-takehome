@@ -13,7 +13,7 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider value={DarkTheme}>
-      <Stack
+        <Stack
           screenOptions={{
             headerStyle: {
               backgroundColor: '#242C3C',
@@ -22,14 +22,13 @@ export default function RootLayout() {
             contentStyle: {
               backgroundColor: '#242C3C',
             },
-            headerBackButtonDisplayMode: 'minimal',
+            fullScreenGestureEnabled: true,
             animation: 'slide_from_right',
             gestureEnabled: true,
-            fullScreenGestureEnabled: true,
           }}
         >
           <Stack.Screen
-            name="home"
+            name="(tabs)"
             options={{ headerShown: false }}
           />
 
@@ -48,10 +47,10 @@ export default function RootLayout() {
           />
         </Stack>
 
-        <StatusBar style="light" />
+      <StatusBar style="light" />
 
-        <AnimatedSplashOverlay />
-      </ThemeProvider>
+      <AnimatedSplashOverlay />
+    </ThemeProvider>
     </GestureHandlerRootView>
   );
 }

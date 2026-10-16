@@ -1,6 +1,8 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { PropsWithChildren } from 'react';
-import Animated, { SlideInRight } from 'react-native-reanimated';
+import { useFocusEffect } from 'expo-router';
+import { PropsWithChildren, useCallback, useRef } from 'react';
+import { useWindowDimensions } from 'react-native';
+import Animated, { cancelAnimation, Easing, ReduceMotion, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import {
   SafeAreaView,
   type Edge,
@@ -22,8 +24,28 @@ export function Screen({
   gradient = false,
   animate = false,
 }: Props) {
+  const { width } = useWindowDimensions();
+  const focusedBefore = useRef(false);
+  const translateX = useSharedValue(animate ? width : 0);
+
+  useFocusEffect(useCallback(() => {
+    if (!animate) return;
+    translateX.value = focusedBefore.current ? -width : width;
+    focusedBefore.current = true;
+    translateX.value = withTiming(0, {
+      duration: 280,
+      easing: Easing.out(Easing.cubic),
+      reduceMotion: ReduceMotion.System,
+    });
+    return () => cancelAnimation(translateX);
+  }, [animate, width, translateX]));
+
+  const transitionStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
   return (
-    <Animated.View entering={animate ? SlideInRight.duration(280) : undefined} className="flex-1" style={{ backgroundColor: colors.bg }}>
+    <Animated.View className="flex-1" style={[{ backgroundColor: colors.bg }, transitionStyle]}>
       {gradient && (
         <LinearGradient
           {...gradients.listingBackground}
