@@ -25,7 +25,7 @@ Open the project in a compatible Expo Go app or iOS simulator (shift + i on Mac)
 
 ## Implementation decisions
 
-The product data in this project is purely local as the exercise focuses on implementing the frontend from the Figma design. I used Zustand to manage shared cart state, as well as reusable components to handle product cards, buttons, quality controls, and totals.
+The product data in this project is purely local as the exercise focuses on implementing the frontend from the Figma design. I used Zustand to manage shared cart state, as well as reusable components to handle product cards, buttons, quantity controls, and totals.
 
 I chose the Open-Meteo public API for my API as the weather is relevant to cycling. The weather panel includes loading and error states to fallback when the user has spotty connection or if the API is experiencing difficulties. The request is canceled when the screen unmounts.
 
