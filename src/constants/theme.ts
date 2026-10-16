@@ -1,13 +1,19 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
 
 import '@/global.css';
-
 import { Platform } from 'react-native';
 
+const Palette = {
+  midnight:  '#242C3C',
+  navy:      '#2D426B',
+  brandBlue: '#3458EA',
+} as const;
+
 export const Colors = {
+  bg: '#242C3C',
+  surface: '#293246',
+  accent: '#36B9F4',
+  accentDark: '#3458EA',
+
   light: {
     text: '#000000',
     background: '#ffffff',
@@ -24,17 +30,39 @@ export const Colors = {
   },
 } as const;
 
+export const gradients = {
+  accent: {
+    colors: ['#37B6E9', '#4B4CED'] as const,
+    start: { x: 0, y: 0 },
+    end: { x: 1, y: 1 },
+  },
+  listingBackground: {
+    colors: [
+      '#242C3C',
+      '#242C3C',
+      '#3498EA',
+      '#3458EA',
+    ] as const,
+    locations: [0, 0.48, 0.52, 1] as const,
+    start: { x: 0, y: 0 },
+    end: { x: 1, y: 1 },
+  },
+};
+
+export const BrandGradient = {
+  colors: [Palette.midnight, Palette.navy, Palette.brandBlue] as const,
+  locations: [0, 0.6, 1] as const,
+  start: { x: 0, y: 0 },
+  end: { x: 0, y: 1 },
+} as const;
+
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
