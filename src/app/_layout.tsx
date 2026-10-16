@@ -22,9 +22,9 @@ export default function RootLayout() {
             contentStyle: {
               backgroundColor: '#242C3C',
             },
-            fullScreenGestureEnabled: true,
-            animation: 'slide_from_right',
-            gestureEnabled: true,
+            animation: 'none',
+            gestureEnabled: false,
+            headerBackButtonDisplayMode: 'minimal',
           }}
         >
           <Stack.Screen
