@@ -1,6 +1,6 @@
 import { ImageSourcePropType } from "react-native";
 
-export type Category = 'road' | 'mountain' | 'helmet';
+export type Category = 'road' | 'mountain' | 'helmet' | 'electric';
 
 export type Product = {
     id: string;

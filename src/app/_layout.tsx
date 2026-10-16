@@ -4,6 +4,7 @@ import { DarkTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
+import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 SplashScreen.preventAutoHideAsync();
@@ -12,25 +13,42 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider value={DarkTheme}>
-        <Stack
+      <Stack
           screenOptions={{
-            animation: 'none',
-            headerStyle: { backgroundColor: '#242C3C' },
+            headerStyle: {
+              backgroundColor: '#242C3C',
+            },
             headerTintColor: '#FFFFFF',
-            contentStyle: { backgroundColor: '#242C3C' },
+            contentStyle: {
+              backgroundColor: '#242C3C',
+            },
+            headerBackButtonDisplayMode: 'minimal',
+            animation: 'slide_from_right',
+            gestureEnabled: true,
+            fullScreenGestureEnabled: true,
           }}
         >
           <Stack.Screen
-            name="(tabs)"
+            name="home"
             options={{ headerShown: false }}
           />
 
           <Stack.Screen
             name="product/[id]"
-            options={{ title: 'Product details' }}
+            options={{
+              title: 'Product details',
+            }}
           />
-          <Stack.Screen name="cart" options={{ title: "My Shopping Cart" }} />
+
+          <Stack.Screen
+            name="cart"
+            options={{
+              title: 'My Shopping Cart',
+            }}
+          />
         </Stack>
+
+        <StatusBar style="light" />
 
         <AnimatedSplashOverlay />
       </ThemeProvider>

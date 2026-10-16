@@ -4,7 +4,7 @@ export const products: Product[] = [
     {
         id: 'peugeot-lr01',
         name: 'PEUGEOT - LR01',
-        category: 'road',
+        category: 'electric',
         price: 1999.99,
         image: require('../../assets/images/peugeot-lr01.png'),
         description:
@@ -20,8 +20,8 @@ export const products: Product[] = [
         name: 'PILOT - CHROMOLY 520',
         category: 'mountain',
         price: 3999.99,
-        image: require('../../assets/images/peugeot-lr01.png'), // Change this to real image
-        description: 'Description here.',
+        image: require('../../assets/images/mikkel-bech.png'),
+        description: 'A rugged chromoly steel mountain bike built for durability, control, and confident riding on trails and rough terrain.',
         specs: [
           { label: 'Frame', value: 'Chromoly steel' },
           { label: 'Type', value: 'Mountain' },
@@ -32,8 +32,8 @@ export const products: Product[] = [
         name: 'SMITH - Trade',
         category: 'helmet',
         price: 120,
-        image: require('../../assets/images/peugeot-lr01.png'), // Change this to real image
-        description: 'Description here.',
+        image: require('../../assets/images/SMITH-Trade.png'),
+        description: 'A lightweight road helmet designed for everyday comfort, ventilation, and reliable protection on every ride.',
         specs: [
           { label: 'Type', value: 'Road helmet' },
         ],

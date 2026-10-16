@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { SlideToConfirm } from '@/components/ui/SlideToConfirm';
 import { useRouter } from 'expo-router';
+import { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 
 import { AccentButton } from '@/components/ui/AccentButton';
@@ -13,8 +13,8 @@ import { PromoInput } from '@/features/cart/components/PromoInput';
 import { useShallow } from 'zustand/react/shallow';
 
 import {
-    useCartStore,
-    useCartTotals
+  useCartStore,
+  useCartTotals
 } from '@/store/cartStore';
 
 export default function CartScreen() {
